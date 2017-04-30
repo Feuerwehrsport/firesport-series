@@ -1,3 +1,5 @@
+# Encoding: utf-8
+
 Gem::Specification.new do |s|
   s.name        = 'firesport-series'
   s.version     = '0.0.0'
@@ -6,7 +8,7 @@ Gem::Specification.new do |s|
   s.description = 'Konfigurationen für Feuerwehrsport-Wettkampfserien'
   s.authors     = ['Georg Limbach']
   s.email       = 'georf@georf.de'
-  s.files       = ['lib/fire_sport-series.rb']
+  s.files       = ['lib/firesport-series.rb']
   s.homepage    = 'https://feuerwehrsport-statistik.de'
   s.license     = 'MIT'
 end
