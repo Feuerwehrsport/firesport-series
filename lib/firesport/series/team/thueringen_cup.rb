@@ -34,8 +34,8 @@ class Firesport::Series::Team::ThueringenCup < Firesport::Series::Team::LaCup
   def sum_time
     @sum_time ||= begin
       sum = ordered_participations.map(&:time).sum
-      if sum >= Firesport::Series::INVALID_TIME::INVALID_TIME
-        Firesport::Series::INVALID_TIME::INVALID_TIME
+      if sum >= Firesport::INVALID_TIME
+        Firesport::INVALID_TIME
       else
         sum
       end

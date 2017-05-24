@@ -68,8 +68,8 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::Base
   def sum_time
     @sum_time ||= begin
       sum = @cups.values.flatten.map(&:time).sum
-      if sum >= Firesport::Series::INVALID_TIME
-        Firesport::Series::INVALID_TIME
+      if sum >= Firesport::INVALID_TIME
+        Firesport::INVALID_TIME
       else
         sum
       end

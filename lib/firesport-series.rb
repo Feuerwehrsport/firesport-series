@@ -1,7 +1,5 @@
 module Firesport
   module Series
-    INVALID_TIME = 99999999
-
     module Person ; end
     module Team ; end
 

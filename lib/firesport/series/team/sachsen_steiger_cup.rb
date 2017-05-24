@@ -18,8 +18,8 @@ class Firesport::Series::Team::SachsenSteigerCup < Firesport::Series::Team::Base
   def sum_time
     @sum_time ||= begin
       sum = @cups.values.flatten.map(&:time).sum
-      if sum >= Firesport::Series::INVALID_TIME::INVALID_TIME
-        Firesport::Series::INVALID_TIME::INVALID_TIME
+      if sum >= Firesport::INVALID_TIME
+        Firesport::INVALID_TIME
       else
         sum
       end
@@ -28,7 +28,7 @@ class Firesport::Series::Team::SachsenSteigerCup < Firesport::Series::Team::Base
 
   def best_time
     @best_time ||= begin
-      @cups.values.flatten.reject(&:time_invalid?).map(&:time).sort.first || Firesport::Series::INVALID_TIME::INVALID_TIME
+      @cups.values.flatten.reject(&:time_invalid?).map(&:time).sort.first || Firesport::INVALID_TIME
     end
   end
 end

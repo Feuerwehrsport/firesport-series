@@ -37,7 +37,7 @@ class Firesport::Series::Person::Base < Struct.new(:entity)
       participations.push(Series::PersonParticipation.new(
         cup: cup,
         person: row.entity.fire_sport_statistics_person_with_dummy,
-        time: row.result_entry.time.to_i || Firesport::Series::INVALID_TIME,
+        time: row.result_entry.time.to_i || Firesport::INVALID_TIME,
         points: points_for_rank(row, ranks),
         rank: ranks[row],
       ))

@@ -8,7 +8,9 @@ Gem::Specification.new do |s|
   s.description = 'Konfigurationen für Feuerwehrsport-Wettkampfserien'
   s.authors     = ['Georg Limbach']
   s.email       = 'georf@georf.de'
-  s.files       = ['lib/firesport-series.rb']
+  s.files       = Dir['{lib,doc,test}/**/*', 'README*']
   s.homepage    = 'https://feuerwehrsport-statistik.de'
   s.license     = 'MIT'
+
+  s.add_dependency 'firesport'
 end

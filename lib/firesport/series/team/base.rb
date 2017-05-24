@@ -33,7 +33,7 @@ class Firesport::Series::Team::Base < Struct.new(:team, :team_number)
         cup: cup,
         team: row.entity.fire_sport_statistics_team_with_dummy,
         team_number: row.entity.number,
-        time: row.result_entry.compare_time.try(:to_i) || Firesport::Series::INVALID_TIME,
+        time: row.result_entry.compare_time.try(:to_i) || Firesport::INVALID_TIME,
         points: points_for_rank(row, ranks),
         rank: ranks[row],
         assessment: assessment,
@@ -84,7 +84,7 @@ class Firesport::Series::Team::Base < Struct.new(:team, :team_number)
   end
 
   def best_time_without_nil
-    best_time || (Firesport::Series::INVALID_TIME + 1)
+    best_time || (Firesport::INVALID_TIME + 1)
   end
 
   def <=> other
