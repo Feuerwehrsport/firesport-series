@@ -1,6 +1,6 @@
-class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::Base
+class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
   def self.max_points
-    11
+    16
   end
 
   def self.points_for_result(rank, time)
