@@ -3,11 +3,11 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
     16
   end
 
-  def self.points_for_result(rank, time)
+  def self.points_for_result(rank, time, double_rank_count: 0)
     if rank == 1
-      max_points
+      max_points - double_rank_count
     else
-      super(rank + 1, time)
+      super(rank + 1, time, double_rank_count: double_rank_count)
     end
   end
 

@@ -10,39 +10,8 @@ class Firesport::Series::Person::Base < Struct.new(:entity)
     30
   end
 
-  def self.points_for_rank(row, ranks)
-    rank = ranks[row]
-    double_rank_count = ranks.values.select { |v| v == rank }.count - 1
-    [(max_points + 1 - ranks[row] - double_rank_count), 0].max
-  end
-
-  def self.points_for_result(rank, time)
-    [max_points + 1 - rank, 0].max
-  end
-
-  # for results of today
-  def self.convert_result_rows(cup, result_rows)
-    participations = []
-    ranks = {}
-    result_rows.each do |row|
-      result_rows.each_with_index do |rank_row, rank|
-        if 0 == (row <=> rank_row)
-          ranks[row] = (rank + 1)
-          break
-        end
-      end
-    end
-
-    result_rows.each do |row|
-      participations.push(Series::PersonParticipation.new(
-        cup: cup,
-        person: row.entity.fire_sport_statistics_person_with_dummy,
-        time: row.result_entry.time.to_i || Firesport::INVALID_TIME,
-        points: points_for_rank(row, ranks),
-        rank: ranks[row],
-      ))
-    end
-    participations
+  def self.points_for_result(rank, time, double_rank_count: 0)
+    [max_points + 1 - rank - double_rank_count, 0].max
   end
 
   def add_participation(participation)

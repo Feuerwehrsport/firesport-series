@@ -6,40 +6,8 @@ class Firesport::Series::Team::Base < Struct.new(:team, :team_number)
     3
   end
 
-  def self.points_for_result(rank, time)
-    [max_points + 1 - rank, 0].max
-  end
-
-  def self.points_for_rank(row, ranks)
-    rank = ranks[row]
-    double_rank_count = ranks.values.select { |v| v == rank }.count - 1
-    [(max_points + 1 - ranks[row] - double_rank_count), 0].max
-  end
-
-  def self.convert_result_rows(cup, result_rows, assessment)
-    participations = []
-    ranks = {}
-    result_rows.each do |row|
-      result_rows.each_with_index do |rank_row, rank|
-        if 0 == (row <=> rank_row)
-          ranks[row] = (rank + 1)
-          break
-        end
-      end
-    end
-
-    result_rows.each do |row|
-      participations.push(Series::TeamParticipation.new(
-        cup: cup,
-        team: row.entity.fire_sport_statistics_team_with_dummy,
-        team_number: row.entity.number,
-        time: row.result_entry.compare_time.try(:to_i) || Firesport::INVALID_TIME,
-        points: points_for_rank(row, ranks),
-        rank: ranks[row],
-        assessment: assessment,
-      ))
-    end
-    participations
+  def self.points_for_result(rank, time, double_rank_count: 0)
+    [max_points + 1 - rank - double_rank_count, 0].max
   end
 
   def initialize(*args)

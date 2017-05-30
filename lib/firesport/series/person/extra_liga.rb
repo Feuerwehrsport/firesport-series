@@ -7,7 +7,7 @@ class Firesport::Series::Person::ExtraLiga < Firesport::Series::Person::Base
     { hl: [''], hw: [''], hb: [''] }
   end
 
-  def self.points_for_result(rank, time)
+  def self.points_for_result(rank, time, options={})
     time == Firesport::INVALID_TIME ? 9999 : time
   end
   
