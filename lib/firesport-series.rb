@@ -24,6 +24,14 @@ module Firesport
       def self.team_class_for(name)
         class_for(name, :team)
       end
+
+      def self.team_class_names
+        Firesport::Series::Team::Base.descendants.map(&:name).map(&:demodulize)
+      end
+
+      def self.person_class_names
+        Firesport::Series::Person::Base.descendants.map(&:name).map(&:demodulize)
+      end
     end
   end
 end
@@ -40,6 +48,7 @@ require 'firesport/series/team/base.rb'
 require 'firesport/series/team/la_cup.rb'
 require 'firesport/series/team/brandenburg_cup.rb'
 require 'firesport/series/team/d_cup.rb'
+require 'firesport/series/team/kp_bautzen.rb'
 require 'firesport/series/team/mv_cup.rb'
 require 'firesport/series/team/sachsen_cup.rb'
 require 'firesport/series/team/sachsen_steiger_cup.rb'
