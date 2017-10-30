@@ -1,7 +1,7 @@
 module Firesport
   module Series
-    module Person ; end
-    module Team ; end
+    module Person; end
+    module Team; end
 
     class Handler
       def self.class_for(name, type)
@@ -9,11 +9,8 @@ module Firesport
         begin
           "::#{class_name}".constantize
         rescue NameError => error
-          if error.message == "uninitialized constant #{class_name}"
-            nil
-          else
-            raise error
-          end
+          return if error.message == "uninitialized constant #{class_name}"
+          raise error
         end
       end
 

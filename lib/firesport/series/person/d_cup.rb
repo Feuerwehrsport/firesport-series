@@ -8,6 +8,6 @@ class Firesport::Series::Person::DCup < Firesport::Series::Person::Base
   end
 
   def self.assessment_disciplines
-    { hb: ['', 'U20'], hl: ['', 'U20'], zk: ['', 'U20'] }
+    { hb: ['', 'U20'], hw: ['', 'U20'], hl: ['', 'U20'], zk: ['', 'U20'], zw: ['', 'U20'] }
   end
 end

@@ -7,11 +7,11 @@ class Firesport::Series::Person::SachsenSteigerCup < Firesport::Series::Person::
     { hl: ['', 'Nachwuchs'] }
   end
 
-  def <=> other
+  def <=>(other)
     compare = other.points <=> points
-    return compare if compare != 0
+    return compare unless compare.zero?
     compare = sum_time <=> other.sum_time
-    return compare if compare != 0
+    return compare unless compare.zero?
     best_time <=> other.best_time
   end
 end

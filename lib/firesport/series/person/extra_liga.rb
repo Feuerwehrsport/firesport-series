@@ -7,23 +7,23 @@ class Firesport::Series::Person::ExtraLiga < Firesport::Series::Person::Base
     { hl: [''], hw: [''], hb: [''] }
   end
 
-  def self.points_for_result(rank, time, options={})
+  def self.points_for_result(_rank, time, _options = {})
     time == Firesport::INVALID_TIME ? 9999 : time
   end
-  
+
   def sum_time
     @sum_time ||= ordered_participations.map(&:time).sum
   end
 
   def points
-    @points ||= ordered_participations.map(&:points).sum + ((4-max_count) * 9999)
+    @points ||= ordered_participations.map(&:points).sum + ((4 - max_count) * 9999)
   end
 
-  def <=> other
-    compare = other.max_count <=> max_count 
-    return compare if compare != 0
+  def <=>(other)
+    compare = other.max_count <=> max_count
+    return compare unless compare.zero?
     compare = points <=> other.points
-    return compare if compare != 0
+    return compare unless compare.zero?
     best_time <=> other.best_time
   end
 
@@ -36,7 +36,7 @@ class Firesport::Series::Person::ExtraLiga < Firesport::Series::Person::Base
   def ordered_participations
     @ordered_participations ||= @participations.sort do |a, b|
       compare = a.points <=> b.points
-      compare == 0 ? a.time <=> b.time : compare
+      compare.zero? ? a.time <=> b.time : compare
     end.first(4)
   end
 end

@@ -7,9 +7,9 @@ class Firesport::Series::Team::LaCup < Firesport::Series::Team::Base
     @points ||= ordered_participations.map(&:points).sum
   end
 
-  def <=> other
+  def <=>(other)
     compare = other.points <=> points
-    return compare if compare != 0
+    return compare unless compare.zero?
     best_time_without_nil <=> other.best_time_without_nil
   end
 
@@ -18,7 +18,7 @@ class Firesport::Series::Team::LaCup < Firesport::Series::Team::Base
   def ordered_participations
     @ordered_participations ||= @cups.values.map(&:first).sort do |a, b|
       compare = b.points <=> a.points
-      compare == 0 ? a.time <=> b.time : compare
+      compare.zero? ? a.time <=> b.time : compare
     end.first(calc_participation_count)
   end
 

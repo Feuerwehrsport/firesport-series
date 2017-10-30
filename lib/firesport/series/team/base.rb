@@ -6,7 +6,7 @@ class Firesport::Series::Team::Base < Struct.new(:team, :team_number)
     3
   end
 
-  def self.points_for_result(rank, time, double_rank_count: 0)
+  def self.points_for_result(rank, _time, double_rank_count: 0)
     [max_points + 1 - rank - double_rank_count, 0].max
   end
 
@@ -15,9 +15,7 @@ class Firesport::Series::Team::Base < Struct.new(:team, :team_number)
     @rank = 0
   end
 
-  def team_id
-    team.id
-  end
+  delegate :id, to: :team, prefix: true
 
   def add_participation(participation)
     @cups ||= {}
@@ -55,18 +53,15 @@ class Firesport::Series::Team::Base < Struct.new(:team, :team_number)
     best_time || (Firesport::INVALID_TIME + 1)
   end
 
-  def <=> other
+  def <=>(other)
     other.points <=> points
   end
 
-  def self.special_sort!(rows)
-  end 
+  def self.special_sort!(_rows); end
 
   def calculate_rank!(other_rows)
     other_rows.each_with_index do |rank_row, rank|
-      if 0 == (self <=> rank_row)
-        return @rank = (rank + 1)
-      end
+      return @rank = (rank + 1) if (self <=> rank_row).zero?
     end
   end
 end

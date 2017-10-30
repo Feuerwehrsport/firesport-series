@@ -10,7 +10,7 @@ class Firesport::Series::Person::Base < Struct.new(:entity)
     30
   end
 
-  def self.points_for_result(rank, time, double_rank_count: 0)
+  def self.points_for_result(rank, _time, double_rank_count: 0)
     [max_points + 1 - rank - double_rank_count, 0].max
   end
 
@@ -39,19 +39,17 @@ class Firesport::Series::Person::Base < Struct.new(:entity)
     @count ||= @participations.count
   end
 
-  def <=> other
+  def <=>(other)
     compare = other.points <=> points
-    return compare if compare != 0
-    compare = other.count <=> count 
-    return compare if compare != 0
+    return compare unless compare.zero?
+    compare = other.count <=> count
+    return compare unless compare.zero?
     sum_time <=> other.sum_time
   end
 
   def calculate_rank!(other_rows)
     other_rows.each_with_index do |rank_row, rank|
-      if 0 == (self <=> rank_row)
-        return @rank = (rank + 1)
-      end
+      return @rank = (rank + 1) if (self <=> rank_row).zero?
     end
   end
 end

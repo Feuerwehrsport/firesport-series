@@ -8,7 +8,7 @@ class Firesport::Series::Team::DCup < Firesport::Series::Team::Base
   end
 
   def self.group_assessment_disciplines
-    { hl: [''], hb: [''] }
+    { hl: [''], hb: [''], hw: [''] }
   end
 
   def self.points_for_rank(row, ranks)
@@ -16,9 +16,9 @@ class Firesport::Series::Team::DCup < Firesport::Series::Team::Base
     row.competition_result_valid? ? points : 0
   end
 
-  def <=> other
+  def <=>(other)
     compare = other.points <=> points
-    return compare if compare != 0
+    return compare unless compare.zero?
     best_time_without_nil <=> other.best_time_without_nil
   end
 end

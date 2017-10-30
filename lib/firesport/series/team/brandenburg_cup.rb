@@ -11,11 +11,11 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
     end
   end
 
-  def <=> other
+  def <=>(other)
     compare = other.points <=> points
-    return compare if compare != 0
+    return compare unless compare.zero?
     compare = other.participation_count <=> participation_count
-    return compare if compare != 0
+    return compare unless compare.zero?
     sum_time <=> other.sum_time
   end
 
@@ -27,21 +27,19 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
         next
       end
       current_rank += 1
-      if 0 == (self <=> rank_row)
-        return @rank = current_rank
-      end
+      return @rank = current_rank if (self <=> rank_row).zero?
     end
   end
 
-  def honor_sort other
+  def honor_sort(other)
     compare = other.points <=> points
-    return compare if compare != 0
+    return compare unless compare.zero?
     compare = other.participation_count <=> participation_count
-    return compare if compare != 0
+    return compare unless compare.zero?
     compare = best_rank <=> other.best_rank
-    return compare if compare != 0
+    return compare unless compare.zero?
     compare = other.best_rank_count <=> best_rank_count
-    return compare if compare != 0
+    return compare unless compare.zero?
     sum_time <=> other.sum_time
   end
 

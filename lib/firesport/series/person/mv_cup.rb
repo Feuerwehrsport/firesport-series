@@ -11,13 +11,13 @@ class Firesport::Series::Person::MVCup < Firesport::Series::Person::Base
     @points ||= ordered_participations.map(&:points).sum
   end
 
-  def <=> other
-    compare = other.max_count <=> max_count 
-    return compare if compare != 0
+  def <=>(other)
+    compare = other.max_count <=> max_count
+    return compare unless compare.zero?
     compare = other.points <=> points
-    return compare if compare != 0
+    return compare unless compare.zero?
     compare = sum_time <=> other.sum_time
-    return compare if compare != 0
+    return compare unless compare.zero?
     best_time <=> other.best_time
   end
 
@@ -30,7 +30,7 @@ class Firesport::Series::Person::MVCup < Firesport::Series::Person::Base
   def ordered_participations
     @ordered_participations ||= @participations.sort do |a, b|
       compare = b.points <=> a.points
-      compare == 0 ? a.time <=> b.time : compare
+      compare.zero? ? a.time <=> b.time : compare
     end.first(3)
   end
 end
