@@ -29,6 +29,10 @@ module Firesport
       def self.person_class_names
         Firesport::Series::Person::Base.descendants.map(&:name).map(&:demodulize)
       end
+
+      def self.class_names
+        (team_class_names + person_class_names).uniq.sort
+      end
     end
   end
 end
