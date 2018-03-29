@@ -1,5 +1,3 @@
-# Encoding: utf-8
-
 Gem::Specification.new do |s|
   s.name        = 'firesport-series'
   s.version     = '0.0.0'
