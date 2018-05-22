@@ -8,6 +8,12 @@ class Firesport::Series::Team::TglCup < Firesport::Series::Team::LaCup
     end
   end
 
+  def points
+    points = super
+    points -= 2 if round.id == 54 && team.id == 438
+    points
+  end
+
   def calc_participation_count
     round.full_cup_count - 1
   end
