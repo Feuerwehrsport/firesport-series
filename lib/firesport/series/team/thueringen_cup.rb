@@ -1,5 +1,5 @@
 class Firesport::Series::Team::ThueringenCup < Firesport::Series::Team::LaCup
-  def self.max_points
+  def self.max_points(_round)
     10
   end
 
@@ -22,14 +22,6 @@ class Firesport::Series::Team::ThueringenCup < Firesport::Series::Team::LaCup
   end
 
   protected
-
-  def best_rank
-    @cups.values.flatten.map(&:rank).min
-  end
-
-  def best_rank_count
-    @cups.values.flatten.map(&:rank).select { |r| r == best_rank }.count
-  end
 
   def sum_time
     @sum_time ||= begin

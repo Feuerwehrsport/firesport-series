@@ -1,5 +1,5 @@
 class Firesport::Series::Team::SachsenSteigerCup < Firesport::Series::Team::Base
-  def self.max_points
+  def self.max_points(_round)
     10
   end
 

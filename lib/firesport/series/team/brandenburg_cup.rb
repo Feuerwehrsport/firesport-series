@@ -1,11 +1,11 @@
 class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
-  def self.max_points
+  def self.max_points(_round)
     16
   end
 
-  def self.points_for_result(rank, time, double_rank_count: 0)
+  def self.points_for_result(rank, time, round, double_rank_count: 0)
     if rank == 1
-      max_points - double_rank_count
+      max_points(round) - double_rank_count
     else
       super(rank + 1, time, double_rank_count: double_rank_count)
     end
@@ -54,14 +54,6 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
   end
 
   protected
-
-  def best_rank
-    @cups.values.flatten.map(&:rank).min
-  end
-
-  def best_rank_count
-    @cups.values.flatten.map(&:rank).select { |r| r == best_rank }.count
-  end
 
   def sum_time
     @sum_time ||= begin

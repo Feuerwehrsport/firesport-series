@@ -1,5 +1,5 @@
 class Firesport::Series::Person::ExtraLiga < Firesport::Series::Person::Base
-  def self.max_points
+  def self.max_points(_round)
     0
   end
 
@@ -7,7 +7,7 @@ class Firesport::Series::Person::ExtraLiga < Firesport::Series::Person::Base
     { hl: [''], hw: [''], hb: [''] }
   end
 
-  def self.points_for_result(_rank, time, _options = {})
+  def self.points_for_result(_rank, time, _round, _options = {})
     time == Firesport::INVALID_TIME ? 9999 : time
   end
 

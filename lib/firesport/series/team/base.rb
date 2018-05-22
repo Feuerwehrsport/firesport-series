@@ -1,4 +1,4 @@
-class Firesport::Series::Team::Base < Struct.new(:team, :team_number)
+class Firesport::Series::Team::Base < Struct.new(:round, :team, :team_number)
   include Draper::Decoratable
   attr_reader :rank
 
@@ -6,8 +6,8 @@ class Firesport::Series::Team::Base < Struct.new(:team, :team_number)
     3
   end
 
-  def self.points_for_result(rank, _time, double_rank_count: 0)
-    [max_points + 1 - rank - double_rank_count, 0].max
+  def self.points_for_result(rank, _time, round, double_rank_count: 0)
+    [max_points(round) + 1 - rank - double_rank_count, 0].max
   end
 
   def initialize(*args)

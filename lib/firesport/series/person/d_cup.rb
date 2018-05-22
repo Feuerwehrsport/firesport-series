@@ -3,7 +3,7 @@ class Firesport::Series::Person::DCup < Firesport::Series::Person::Base
     10
   end
 
-  def self.max_points
+  def self.max_points(_round)
     30
   end
 

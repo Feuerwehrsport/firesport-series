@@ -1,4 +1,4 @@
-class Firesport::Series::Person::Base < Struct.new(:entity)
+class Firesport::Series::Person::Base < Struct.new(:round, :entity)
   include Draper::Decoratable
   attr_reader :participations, :rank
 
@@ -6,12 +6,12 @@ class Firesport::Series::Person::Base < Struct.new(:entity)
     3
   end
 
-  def self.max_points
+  def self.max_points(_round)
     30
   end
 
-  def self.points_for_result(rank, _time, double_rank_count: 0)
-    [max_points + 1 - rank - double_rank_count, 0].max
+  def self.points_for_result(rank, _time, round, double_rank_count: 0)
+    [max_points(round) + 1 - rank - double_rank_count, 0].max
   end
 
   def add_participation(participation)

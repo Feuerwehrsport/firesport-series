@@ -1,5 +1,5 @@
 class Firesport::Series::Person::SachsenSteigerCup < Firesport::Series::Person::MVCup
-  def self.max_points
+  def self.max_points(_round)
     30
   end
 

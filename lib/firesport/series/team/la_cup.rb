@@ -25,4 +25,12 @@ class Firesport::Series::Team::LaCup < Firesport::Series::Team::Base
   def calc_participation_count
     3
   end
+
+  def best_rank
+    @cups.values.flatten.map(&:rank).min
+  end
+
+  def best_rank_count
+    @cups.values.flatten.map(&:rank).select { |r| r == best_rank }.count
+  end
 end
