@@ -1,7 +1,7 @@
 class Firesport::Series::Team::TglCup < Firesport::Series::Team::LaCup
   def self.max_points(round)
     case round.year.to_i
-    when 2018 then 15
+    when 2018 then 16
     when 2017 then 10
     when 2016 then 13
     else 15
