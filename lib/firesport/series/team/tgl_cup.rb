@@ -4,6 +4,8 @@ class Firesport::Series::Team::TglCup < Firesport::Series::Team::LaCup
     when 2018 then 16
     when 2017 then 10
     when 2016 then 13
+    when 2015 then 15
+    when 2014 then 10
     else 15
     end
   end
