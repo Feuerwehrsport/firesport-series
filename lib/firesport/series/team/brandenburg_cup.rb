@@ -7,7 +7,7 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
     if rank == 1
       max_points(round) - double_rank_count
     else
-      super(rank + 1, time, double_rank_count: double_rank_count)
+      super(rank + 1, time, round, double_rank_count: double_rank_count)
     end
   end
 
