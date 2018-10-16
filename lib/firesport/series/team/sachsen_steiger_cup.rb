@@ -10,8 +10,10 @@ class Firesport::Series::Team::SachsenSteigerCup < Firesport::Series::Team::Base
   def <=>(other)
     compare = other.points <=> points
     return compare unless compare.zero?
+
     compare = sum_time <=> other.sum_time
     return compare unless compare.zero?
+
     best_time <=> other.best_time
   end
 
@@ -28,7 +30,7 @@ class Firesport::Series::Team::SachsenSteigerCup < Firesport::Series::Team::Base
 
   def best_time
     @best_time ||= begin
-      @cups.values.flatten.reject(&:time_invalid?).map(&:time).sort.first || Firesport::INVALID_TIME
+      @cups.values.flatten.reject(&:time_invalid?).map(&:time).min || Firesport::INVALID_TIME
     end
   end
 end

@@ -22,8 +22,10 @@ class Firesport::Series::Person::ExtraLiga < Firesport::Series::Person::Base
   def <=>(other)
     compare = other.max_count <=> max_count
     return compare unless compare.zero?
+
     compare = points <=> other.points
     return compare unless compare.zero?
+
     best_time <=> other.best_time
   end
 

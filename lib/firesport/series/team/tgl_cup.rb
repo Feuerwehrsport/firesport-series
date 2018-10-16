@@ -23,10 +23,13 @@ class Firesport::Series::Team::TglCup < Firesport::Series::Team::LaCup
   def <=>(other)
     compare = other.points <=> points
     return compare unless compare.zero?
+
     compare = best_rank <=> other.best_rank
     return compare unless compare.zero?
+
     compare = other.best_rank_count <=> best_rank_count
     return compare unless compare.zero?
+
     other.ordered_participations.count <=> ordered_participations.count
   end
 end

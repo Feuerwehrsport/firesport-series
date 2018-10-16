@@ -14,10 +14,13 @@ class Firesport::Series::Person::MVCup < Firesport::Series::Person::Base
   def <=>(other)
     compare = other.max_count <=> max_count
     return compare unless compare.zero?
+
     compare = other.points <=> points
     return compare unless compare.zero?
+
     compare = sum_time <=> other.sum_time
     return compare unless compare.zero?
+
     best_time <=> other.best_time
   end
 

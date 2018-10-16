@@ -1,4 +1,4 @@
-class Firesport::Series::Person::Base < Struct.new(:round, :entity)
+Firesport::Series::Person::Base = Struct.new(:round, :entity) do
   include Draper::Decoratable
   attr_reader :participations, :rank
 
@@ -42,8 +42,10 @@ class Firesport::Series::Person::Base < Struct.new(:round, :entity)
   def <=>(other)
     compare = other.points <=> points
     return compare unless compare.zero?
+
     compare = other.count <=> count
     return compare unless compare.zero?
+
     sum_time <=> other.sum_time
   end
 

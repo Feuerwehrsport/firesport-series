@@ -10,8 +10,10 @@ class Firesport::Series::Person::SachsenSteigerCup < Firesport::Series::Person::
   def <=>(other)
     compare = other.points <=> points
     return compare unless compare.zero?
+
     compare = sum_time <=> other.sum_time
     return compare unless compare.zero?
+
     best_time <=> other.best_time
   end
 end

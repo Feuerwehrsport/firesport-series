@@ -1,4 +1,4 @@
-class Firesport::Series::Team::Base < Struct.new(:round, :team, :team_number)
+Firesport::Series::Team::Base = Struct.new(:round, :team, :team_number) do
   include Draper::Decoratable
   attr_reader :rank
 

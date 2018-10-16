@@ -10,6 +10,7 @@ class Firesport::Series::Team::LaCup < Firesport::Series::Team::Base
   def <=>(other)
     compare = other.points <=> points
     return compare unless compare.zero?
+
     best_time_without_nil <=> other.best_time_without_nil
   end
 
