@@ -53,6 +53,10 @@ class Firesport::Series::Team::VierBahnenPokal < Firesport::Series::Team::LaCup
 
   protected
 
+  def calc_participation_count
+    round.full_cup_count
+  end
+
   def sum_time
     @sum_time ||= begin
       sum = @cups.values.flatten.map(&:time).sum
