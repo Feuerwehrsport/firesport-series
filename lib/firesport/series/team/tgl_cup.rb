@@ -1,6 +1,7 @@
 class Firesport::Series::Team::TglCup < Firesport::Series::Team::LaCup
   def self.max_points(round)
     case round.year.to_i
+    when 2019 then 16
     when 2018 then 16
     when 2017 then 10
     when 2016 then 13
@@ -8,12 +9,6 @@ class Firesport::Series::Team::TglCup < Firesport::Series::Team::LaCup
     when 2014 then 10
     else 15
     end
-  end
-
-  def points
-    points = super
-    points -= 2 if round.id == 54 && team.id == 438
-    points
   end
 
   def calc_participation_count
