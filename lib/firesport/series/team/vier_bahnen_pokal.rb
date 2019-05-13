@@ -1,5 +1,5 @@
 class Firesport::Series::Team::VierBahnenPokal < Firesport::Series::Team::LaCup
-  def self.points_for_result(rank, time, round, double_rank_count: 0)
+  def self.points_for_result(rank, _time, _round, double_rank_count: 0)
     rank == 1 ? 0 : rank
   end
 
@@ -17,7 +17,7 @@ class Firesport::Series::Team::VierBahnenPokal < Firesport::Series::Team::LaCup
     @points ||= begin
       fail_points = ((round.full_cup_count || 5) - count) * 20
       ordered_participations.map(&:points).sum + fail_points
-    end      
+    end
   end
 
   def calculate_rank!(other_rows)

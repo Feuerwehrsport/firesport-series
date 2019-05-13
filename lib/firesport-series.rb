@@ -8,10 +8,10 @@ module Firesport
         class_name = "Firesport::Series::#{type == :person ? 'Person' : 'Team'}::#{name}"
         begin
           "::#{class_name}".constantize
-        rescue NameError => error
-          return if error.message == "uninitialized constant #{class_name}"
+        rescue NameError => e
+          return if e.message == "uninitialized constant #{class_name}"
 
-          raise error
+          raise e
         end
       end
 
