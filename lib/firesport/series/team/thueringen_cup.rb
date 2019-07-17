@@ -3,10 +3,14 @@ class Firesport::Series::Team::ThueringenCup < Firesport::Series::Team::LaCup
     10
   end
 
-  def self.decrement_points(points, rank)
-    points -= 1 if rank.in? [2, 3]
-    points -= 1 if points.positive?
-    points
+  def self.points_for_result(rank, time, round, double_rank_count: 0)
+    if rank == 1
+      max_points(round) - double_rank_count
+    elsif rank == 2
+      max_points(round) - 2 - double_rank_count
+    else
+      super(rank + 2, time, round, double_rank_count: double_rank_count)
+    end
   end
 
   def <=>(other)
