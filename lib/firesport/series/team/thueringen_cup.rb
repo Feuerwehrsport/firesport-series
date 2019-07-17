@@ -43,6 +43,10 @@ class Firesport::Series::Team::ThueringenCup < Firesport::Series::Team::LaCup
   end
 
   def calc_participation_count
-    4
+    if round.year.to_i < 2016
+      4
+    else
+      round.full_cup_count
+    end
   end
 end
