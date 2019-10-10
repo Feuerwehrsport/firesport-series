@@ -32,6 +32,6 @@ class Firesport::Series::Team::LaCup < Firesport::Series::Team::Base
   end
 
   def best_rank_count
-    @cups.values.flatten.map(&:rank).select { |r| r == best_rank }.count
+    @cups.values.flatten.map(&:rank).count { |r| r == best_rank }
   end
 end
