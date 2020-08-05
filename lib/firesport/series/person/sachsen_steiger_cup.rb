@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Firesport::Series::Person::SachsenSteigerCup < Firesport::Series::Person::MVCup
   def self.max_points(_round)
     30

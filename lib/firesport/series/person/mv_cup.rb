@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Firesport::Series::Person::MVCup < Firesport::Series::Person::Base
   def self.max_points(_round)
     20

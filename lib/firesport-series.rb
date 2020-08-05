@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Firesport
   module Series
     module Person; end

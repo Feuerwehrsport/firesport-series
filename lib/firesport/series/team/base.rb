@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Firesport::Series::Team::Base = Struct.new(:round, :team, :team_number) do
   include Draper::Decoratable
   attr_reader :rank

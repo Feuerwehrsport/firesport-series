@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Firesport::Series::Person::DCup < Firesport::Series::Person::Base
   def self.honor_rank
     10

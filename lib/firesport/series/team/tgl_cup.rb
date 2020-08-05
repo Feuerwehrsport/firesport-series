@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Firesport::Series::Team::TglCup < Firesport::Series::Team::LaCup
   def self.max_points(round)
     case round.year.to_i

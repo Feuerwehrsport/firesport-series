@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Firesport::Series::Team::LaCup < Firesport::Series::Team::Base
   def self.assessment_disciplines
     { la: [''] }

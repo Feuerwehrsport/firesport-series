@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Firesport::Series::Team::DCup < Firesport::Series::Team::Base
   def self.max_points(_round)
     10

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Firesport::Series::Person::Base = Struct.new(:round, :entity) do
   include Draper::Decoratable
   attr_reader :participations, :rank
