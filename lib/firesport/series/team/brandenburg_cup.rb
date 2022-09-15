@@ -26,7 +26,7 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
   def calculate_rank!(other_rows)
     current_rank = 0
     other_rows.each do |rank_row|
-      if rank_row.participation_count < 3
+      if rank_row.participation_count < (round.year.to_i == 2022 ? 2 : 3)
         return @rank = nil if rank_row == self
 
         next
