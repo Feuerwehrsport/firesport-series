@@ -11,7 +11,7 @@ module Firesport
         begin
           "::#{class_name}".constantize
         rescue NameError => e
-          return if e.message == "uninitialized constant #{class_name}"
+          return if e.message.start_with?("uninitialized constant #{class_name}")
 
           raise e
         end
