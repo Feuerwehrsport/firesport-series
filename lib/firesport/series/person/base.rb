@@ -8,12 +8,12 @@ Firesport::Series::Person::Base = Struct.new(:round, :entity) do
     3
   end
 
-  def self.max_points(_round)
+  def self.max_points(_round, gender:)
     30
   end
 
-  def self.points_for_result(rank, _time, round, double_rank_count: 0)
-    [max_points(round) + 1 - rank - double_rank_count, 0].max
+  def self.points_for_result(rank, _time, round, double_rank_count: 0, gender:)
+    [max_points(round, gender: gender) + 1 - rank - double_rank_count, 0].max
   end
 
   def add_participation(participation)

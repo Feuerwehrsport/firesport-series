@@ -5,11 +5,11 @@ class Firesport::Series::Team::ThueringenCup < Firesport::Series::Team::LaCup
     10
   end
 
-  def self.points_for_result(rank, time, round, double_rank_count: 0)
+  def self.points_for_result(rank, time, round, double_rank_count: 0, gender:)
     if rank == 1
-      max_points(round) - double_rank_count
+      max_points(round, gender: gender) - double_rank_count
     elsif rank == 2
-      max_points(round) - 2 - double_rank_count
+      max_points(round, gender: gender) - 2 - double_rank_count
     else
       super(rank + 2, time, round, double_rank_count: double_rank_count)
     end

@@ -8,8 +8,8 @@ Firesport::Series::Team::Base = Struct.new(:round, :team, :team_number) do
     3
   end
 
-  def self.points_for_result(rank, _time, round, double_rank_count: 0)
-    [max_points(round) + 1 - rank - double_rank_count, 0].max
+  def self.points_for_result(rank, _time, round, double_rank_count: 0, gender:)
+    [max_points(round, gender: gender) + 1 - rank - double_rank_count, 0].max
   end
 
   def initialize(*args)

@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
-  def self.max_points(_round)
+  def self.max_points(_round, gender:)
     16
   end
 
-  def self.points_for_result(rank, time, round, double_rank_count: 0)
+  def self.points_for_result(rank, time, round, double_rank_count: 0, gender:)
     if rank == 1
-      max_points(round) - double_rank_count
+      max_points(round, gender: gender) - double_rank_count
     else
-      super(rank + 1, time, round, double_rank_count: double_rank_count)
+      super(rank + 1, time, round, double_rank_count: double_rank_count, gender: gender)
     end
   end
 

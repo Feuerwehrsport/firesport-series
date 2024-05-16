@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Firesport::Series::Team::VierBahnenPokal2019 < Firesport::Series::Team::LaCup
-  def self.max_points(_round)
+  def self.max_points(_round, gender:)
     15
   end
 
-  def self.points_for_result(rank, time, round, double_rank_count: 0)
+  def self.points_for_result(rank, time, round, double_rank_count: 0, gender:)
     if rank == 1
       25
     elsif rank == 2
@@ -15,7 +15,7 @@ class Firesport::Series::Team::VierBahnenPokal2019 < Firesport::Series::Team::La
     elsif rank == 4
       13
     else
-      super(rank, time, round, double_rank_count: double_rank_count)
+      super(rank, time, round, double_rank_count: double_rank_count, gender: gender)
     end
   end
 
