@@ -24,9 +24,14 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
   end
 
   def calculate_rank!(other_rows)
+
+    year_min_participations = Hash.new(3)
+    year_min_participations[2022] = 2
+    year_min_participations[2024] = 5
+
     current_rank = 0
     other_rows.each do |rank_row|
-      if rank_row.participation_count < (round.year.to_i == 2022 ? 2 : 3)
+      if rank_row.participation_count < year_min_participations[round.year.to_i]
         return @rank = nil if rank_row == self
 
         next
@@ -40,7 +45,8 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
     compare = other.points <=> points
     return compare unless compare.zero?
 
-    compare = other.participation_count <=> participation_count
+    compare = [other.participation_count,
+               calc_participation_count].min <=> [participation_count, calc_participation_count].min
     return compare unless compare.zero?
 
     compare = best_rank <=> other.best_rank
@@ -76,6 +82,6 @@ class Firesport::Series::Team::BrandenburgCup < Firesport::Series::Team::LaCup
   end
 
   def calc_participation_count
-    4
+    round.full_cup_count - 1
   end
 end

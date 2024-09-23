@@ -6,16 +6,17 @@ class Firesport::Series::Team::VierBahnenPokal2019 < Firesport::Series::Team::La
   end
 
   def self.points_for_result(rank, time, round, double_rank_count: 0, gender:)
-    if rank == 1
+    case rank
+    when 1
       25
-    elsif rank == 2
+    when 2
       20
-    elsif rank == 3
+    when 3
       16
-    elsif rank == 4
+    when 4
       13
     else
-      super(rank, time, round, double_rank_count: double_rank_count, gender: gender)
+      super(rank, time, round, double_rank_count:, gender:)
     end
   end
 
@@ -45,7 +46,7 @@ class Firesport::Series::Team::VierBahnenPokal2019 < Firesport::Series::Team::La
   protected
 
   def calc_participation_count
-    4
+    round.full_cup_count - 1
   end
 
   def sum_time
