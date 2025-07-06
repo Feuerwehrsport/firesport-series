@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Firesport::Series::Person::SaPokal < Firesport::Series::Person::Base
+  def self.assessment_disciplines
+    { hb: [''], hw: [''] }
+  end
+
   def self.max_points(_round, gender:)
     20
   end
