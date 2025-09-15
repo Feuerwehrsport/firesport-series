@@ -6,7 +6,7 @@ class Firesport::Series::Person::SachsenSteigerCup < Firesport::Series::Person::
   end
 
   def self.assessment_disciplines
-    { hl: ['', 'Nachwuchs'] }
+    { hl: ['', 'U20', 'U15'] }
   end
 
   def <=>(other)
